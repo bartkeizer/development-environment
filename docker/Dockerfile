@@ -13,6 +13,9 @@ RUN apt-get update && apt-get install -y \
     gnupg2 \
     groff \
     unzip \
+    x11-apps \
+    libxtst6 \
+    libxi6 \
  && rm -rf /var/lib/apt/lists/*
 #Amazon Coretto JDK
 RUN wget -O- https://apt.corretto.aws/corretto.key | apt-key add - \
