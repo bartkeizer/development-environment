@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-MAINTAINER Bart Keizer "bjkeizer89@gmail.com"
+MAINTAINER Bart Keizer "bart@bartkeizer.nl"
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y \
@@ -33,4 +33,12 @@ RUN ./aws/install
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN grep -qxF 'deb https://apt.kubernetes.io/ kubernetes-xenial main' /etc/apt/sources.list.d/kubernetes.list || bash -c 'echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" >> /etc/apt/sources.list.d/kubernetes.list'
 RUN apt-get update && apt-get install -y kubectl
+#GUI settings
+
+#Install Intellij IDEA
+RUN wget -qO- https://download.jetbrains.com/idea/ideaIU-2021.2.3.tar.gz| \
+    tar --transform 's/idea-IU-[0-9.]*/idea/' -zxf - -C /opt
+
+ENV DISPLAY host.docker.internal:0
+
 
