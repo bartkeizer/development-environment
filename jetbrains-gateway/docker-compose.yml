@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  jetbrains-gateway:
+    build: .
+    ports:
+      - "22:22"
+    volumes:
+      - developer-home:/home/developer
+volumes:
+  developer-home:
